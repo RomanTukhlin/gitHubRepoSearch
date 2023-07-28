@@ -156,7 +156,6 @@ searchInput.addEventListener(
   'keyup',
   debounce((event) => {
     // get last elem from searchInput.value
-    let inputValue = searchInput.value
     const lastElem = event.target.value.charAt(event.target.value.length - 1)
     if (searchInput.value.length === 0) {
       removeElement()
