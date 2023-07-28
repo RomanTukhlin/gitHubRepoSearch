@@ -1,0 +1,215 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+$bg: #644bff;
+$bg-hover: #efefef;
+$bg-elem: #fff;
+$text: #000;
+$box-shadow: rgba(0, 0, 0, 0.12);
+$box-shadow-active: rgba(0, 0, 0, 0.1);
+$btn-color: #644bff;
+$btn-color-hover: #2b1e75;
+body {
+  font-family: Poppins, serif;
+  background: $bg;
+  color: $text;
+  font-size: 16px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.app {
+  height: 585px;
+  padding: 50px;
+  border-radius: 0.6rem;
+  box-shadow: 0 1px 5px 3px $box-shadow;
+  background: #1d1162;
+  overflow: auto;
+
+  &__search {
+    margin: 0 0 25px 0;
+  }
+
+  &__starred {
+  }
+}
+
+.search {
+  position: relative;
+  min-width: 250px;
+  max-width: 750px;
+  background: $bg-elem;
+  border-radius: 0.6rem;
+  box-shadow: 0 1px 5px 3px $box-shadow;
+
+
+  &__input-body {
+    border-radius: inherit;
+    background: inherit;
+    position: relative;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px 0 20px;
+    box-shadow: 0 1px 5px $box-shadow-active;
+  }
+
+  &__input {
+    height: 55px;
+    width: 100%;
+    padding: 0 10px 0 0;
+    outline: none;
+    border: none;
+    border-radius: inherit;
+    font-size: 1.2rem;
+  }
+
+  &__button {
+    background: transparent;
+    cursor: pointer;
+    color: $btn-color;
+    transform: scale(var(--ggs, 1.3));
+
+    &:hover {
+      color: $btn-color-hover;
+    }
+  }
+
+  &__autocom {
+    width: 100%;
+    position: absolute;
+    background: inherit;
+    border-radius: 0 0 0.6rem 0.6rem;
+    z-index: 3;
+    top: 45px;
+    left: 0;
+    padding: 20px 8px 10px 8px;
+    max-height: 270px;
+    overflow-y: auto;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0px 1px 5px 3px $box-shadow;
+
+    &.active {
+      opacity: 1;
+      pointer-events: visible;
+    }
+  }
+
+  &__autocom-item {
+    cursor: pointer;
+    padding: 8px 12px;
+    width: 100%;
+    border-radius: 0.2rem;
+    //display: none;
+
+    &:hover {
+      background: $bg-hover;
+    }
+  }
+}
+
+
+.starred {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 10px;
+  flex-wrap: wrap;
+
+  &__item {
+    flex: 0 1 49%;
+    height: 192px;
+    padding: 20px;
+    border-radius: 0.6rem;
+    background: $bg-elem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__item-content {
+    flex: 0 1 70%;
+  }
+
+  &__item-text {
+    font-size: 1.2rem;
+    position: relative;
+    line-height: 22px;
+
+    & span {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 230px;
+      background: transparent;
+
+      &:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 17px;
+        width: 20px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.2007003484987745) 0%, rgba(255, 255, 255, 0.5004202364539565) 35%, rgba(255, 255, 255, 1) 100%);
+      }
+    }
+
+    &:not(:last-child) {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &__item-close {
+    transform: scale(var(--ggs, 2));
+    color: $btn-color;
+
+    &:hover {
+      color: $btn-color-hover;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    display: block;
+    padding: 50px 15px;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+  .app {
+    padding: 25px 15px;
+    height: 746px;
+  }
+  .starred {
+    &__item {
+      flex: 0 1 100%;
+    }
+
+    &__item-text {
+      & span {
+        max-width: 160px;
+      }
+    }
+  }
+}
